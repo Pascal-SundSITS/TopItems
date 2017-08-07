@@ -1,0 +1,8 @@
+{
+    "name"              :"TopItems",
+    "description"       :"Plugin to render a list of top items",
+    "namespace"         :"TopItems",
+    "author"            :"Sundsits",
+    "type"              :"template",
+    "serviceProvider"   :"TopItems\\Providers\\TopItemsServiceProvider"
+}
