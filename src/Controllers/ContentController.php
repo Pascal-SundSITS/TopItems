@@ -7,6 +7,12 @@ use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
 
 class ContentController extends Controller
 {
+    public function showArray($array)
+    {
+      print_r($array, true);
+    }
+
+
     public function showTopItems(Twig $twig, ItemDataLayerRepositoryContract $itemRepository):string
     {
       $itemColumns = [
@@ -51,6 +57,9 @@ class ContentController extends Controller
             'resultCount' => $resultItems->count(),
             'currentItems' => $items
         );
+
+        $this->showArray($templateData);
+
 
         return $twig->render('TopItems::content.TopItems', $templateData);
       }
