@@ -21,7 +21,7 @@ class ContentController extends Controller
           'variationRetailPrice' => [
               'price'
           ],
-          'variationImage' => [
+          'variationImageList' => [
               'path',
               'cleanImageName'
           ]
