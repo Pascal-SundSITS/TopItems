@@ -9,7 +9,7 @@ class ContentController extends Controller
 {
     public function showArray($array)
     {
-      print_r($array, true);
+      //print_r($array, true);
     }
 
 
@@ -26,7 +26,7 @@ class ContentController extends Controller
           'variationRetailPrice' => [
               'price'
           ],
-          'variationImageList' => [
+          'variationImage' => [
               'path',
               'cleanImageName'
           ]
