@@ -67,7 +67,7 @@ class ContentController extends Controller
             'currentItems' => $items
         );
 
-        //ContentController::traverseArray($templateData);
+        ContentController::traverseArray($resultItems);
 
         return $twig->render('TopItems::content.TopItems', $templateData);
       }
