@@ -7,21 +7,6 @@ use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
 
 class ContentController extends Controller
 {
-    public function traverseArray($array)
-    {
-      // Loops through each element. If element again is array, function is recalled. If not, result is echoed.
-      foreach($array as $key=>$value)
-      {
-        if(is_array($value))
-        {
-          Self::traverseArray($value);
-          //traverseArray($value);
-        }else{
-          echo $key." = ".$value."<br />\n";
-        }
-      }
-    }
-
     public function showTopItems(Twig $twig, ItemDataLayerRepositoryContract $itemRepository):string
     {
         $itemColumns =  [
@@ -66,8 +51,6 @@ class ContentController extends Controller
             'resultCount' => $resultItems->count(),
             'currentItems' => $items
         );
-
-        ContentController::traverseArray($resultItems);
 
         return $twig->render('TopItems::content.TopItems', $templateData);
       }
