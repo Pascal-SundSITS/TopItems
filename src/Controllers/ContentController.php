@@ -51,7 +51,11 @@ class ContentController extends Controller
             'currentItems' => $items
         );
 
-        echo "<pre>". print_r($templateData, true) . "</pre>";
+        echo "<pre>".
+        foreach($templateData as $key => $value){
+            echo "Array key : $key = $value <br/>";
+          }
+        . "</pre>";
 
         return $twig->render('TopItems::content.TopItems', $templateData);
       }
