@@ -53,12 +53,9 @@ class ContentController extends Controller
             'currentItems' => $items
         );
 
+        print(json_encode($templateData));
+
         return $twig->render('TopItems::content.TopItems', $templateData);
       }
 }
-$test = "test";
-
-
-print($test);
-
  ?>
