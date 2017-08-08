@@ -59,6 +59,6 @@ class ContentController extends Controller
 $test = "test";
 
 
-print_r($test, true);
+print($test);
 
  ?>
