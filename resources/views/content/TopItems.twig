@@ -4,6 +4,7 @@
     <h1 style="text-align: center">{{ resultCount }} top items found!</h1>
     <div class="col-xs-12 card-deck-wrapper" style="overflow: auto">
     <ul class="list-unstyled card-deck" style="height: 380px">
+        {% print_r(currentItems) %}
         {% if currentItems is not null %}
             {% for item in currentItems %}
                 <li class="card" style="width: 280px">
