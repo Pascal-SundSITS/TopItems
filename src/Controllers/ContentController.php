@@ -51,16 +51,21 @@ class ContentController extends Controller
             'currentItems' => $items
         );
 
-        foreach($templateData as $key => $value)
+        function traverseArray($array)
         {
-            if (is_array($value))
-            {
-                //Self::traverseArray($value);
-                traverseArray($value);
-            }else {
-                echo $key . " = " . $value . "<br />\n";
-            }
+        	// Loops through each element. If element again is array, function is recalled. If not, result is echoed.
+        	foreach($array as $key=>$value)
+        	{
+        		if(is_array($value))
+        		{
+        			traverseArray($value);
+        		}else{
+        			echo $key." = ".$value."<br />\n";
+        		}
+        	}
         }
+
+        traverseArray($templateData);
 
         return $twig->render('TopItems::content.TopItems', $templateData);
       }
