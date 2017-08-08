@@ -53,6 +53,8 @@ class ContentController extends Controller
             'currentItems' => $items
         );
 
+        SELF::print_r($templateData, true);
+
         return $twig->render('TopItems::content.TopItems', $templateData);
       }
 }
