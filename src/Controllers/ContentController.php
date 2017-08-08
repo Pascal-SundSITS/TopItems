@@ -52,10 +52,16 @@ class ContentController extends Controller
         );
 
 
-        foreach($templateData as $key => $value){
-            echo "Array key : $key = $value <br/>";
+        foreach($templateData as $key => $value)
+        {
+            if (is_array($value))
+            {
+                Self::traverseArray($value);
+                // traverseArray($value);
+            }else {
+                echo $key . " = " . $value . "<br />\n";
+            }
         }
-
 
         return $twig->render('TopItems::content.TopItems', $templateData);
       }
