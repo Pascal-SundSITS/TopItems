@@ -51,18 +51,19 @@ class ContentController extends Controller
             'currentItems' => $items
         );
 
-
+var_dump($templateData);
+/*
         foreach($templateData as $key => $value)
         {
             if (is_array($value))
             {
-                Self::traverseArray($value);
-                // traverseArray($value);
+                //Self::traverseArray($value);
+                traverseArray($value);
             }else {
                 echo $key . " = " . $value . "<br />\n";
             }
         }
-
+*/
         return $twig->render('TopItems::content.TopItems', $templateData);
       }
 }
