@@ -7,52 +7,50 @@ use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
 
 class ContentController extends Controller
 {
-    public function showTopItems(Twig $twig, ItemDataLayerRepositoryContract $itemRepository):string
-    {
-        $itemColumns = [
-                          "itemDescription"       =>  [
-                                                        "name1",
-                                                        "description"
-                          ],
-                          "variationBase"         =>  [
-                                                        "id"
-                          ],
-                          "variationRetailPrice"  =>  [
-                                                        "price"
-                          ],
-                          "variationImageList"    =>  [
-                                                        "path",
-                                                        "cleanImageName"
-                          ]
-                        ];
+  public function showTopItems(Twig $twig, ItemDataLayerRepositoryContract $itemRepository):string
+{
+  $itemColumns = [
+      'itemDescription' => [
+          'name1',
+          'description'
+      ],
+      'variationBase' => [
+          'id'
+      ],
+      'variationRetailPrice' => [
+          'price'
+      ],
+      'variationImageList' => [
+          'path',
+          'cleanImageName'
+      ]
+  ];
 
-        $itemFilter = [
-                        "itemBase.isStoreSpecial" => [
-                                                        "shopAction" => [3]
-                        ]
-        ];
+  $itemFilter = [
+      'itemBase.isStoreSpecial' => [
+          'shopAction' => [3]
+      ]
+  ];
 
-        $itemParams = [
-                        "language" => "en"
-        ];
+  $itemParams = [
+      'language' => 'en'
+  ];
 
-        $resultsItems = $itemRepository
-          ->search($itemColumns, $itemFilter, $itemParams);
+  $resultItems = $itemRepository
+      ->search($itemColumns, $itemFilter, $itemParams);
 
-          $items = array();
+  $items = array();
+  foreach ($resultItems as $item)
+  {
+      $items[] = $item;
+  }
+  $templateData = array(
+      'resultCount' => $resultItems->count(),
+      'currentItems' => $items
+  );
 
-          foreach($resultsItems as $item)
-          {
-              $items[] = $item;
-          }
-
-          $templateData = array(
-                                  "resultCount"   =>  $resultsItems->count(),
-                                  "currentItems"  =>  $items
-                          );
-
-          return $twig->render('TopItems::content.TopItems', $templateData);
-    }
+  return $twig->render('TopItems::content.TopItems', $templateData);
+}
 }
 
  ?>
