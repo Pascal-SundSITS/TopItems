@@ -14,7 +14,8 @@ class ContentController extends Controller
       {
         if(is_array($value))
         {
-          traverseArray($value);
+          Self::traverseArray($value);
+          //traverseArray($value);
         }else{
           echo $key." = ".$value."<br />\n";
         }
