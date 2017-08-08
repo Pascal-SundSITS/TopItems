@@ -59,6 +59,7 @@ class ContentController extends Controller
         foreach ($resultItems as $item)
         {
             $items[] = $item;
+            echo $item;
         }
 
         $templateData = array(
@@ -66,7 +67,7 @@ class ContentController extends Controller
             'currentItems' => $items
         );
 
-        ContentController::traverseArray($templateData);
+        //ContentController::traverseArray($templateData);
 
         return $twig->render('TopItems::content.TopItems', $templateData);
       }
